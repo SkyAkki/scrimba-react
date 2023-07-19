@@ -1,21 +1,24 @@
 import {Link, NavLink, Outlet } from "react-router-dom"
-import React from "react"
-import { useParams } from "react-router-dom"
+import { useLoaderData } from "react-router-dom"
+import { getHostVans } from "../../api"
+import {requireAuth} from "../../utils"
+
+export async function loader({params}){
+    await requireAuth
+    return getHostVans(params.id)
+}
 
 export default function HostVanDetails(){
-    const params = useParams()
-    const [currentVan,setCurrentVan] = React.useState([])
+    // const params = useParams()
+    // const [currentVan,setCurrentVan] = React.useState([])
+    const currentVan = useLoaderData()
     const activeStyle = {
         fontWeight: "bold",
         textDecoration: "underline",
         color: "#161616"
     }
 
-    React.useEffect(()=>{
-        fetch(`/api/host/vans/${params.id}`)
-        .then(res=>res.json())
-        .then(data=>setCurrentVan(data.vans[0]))
-    },[])
+    // Moved the useEffect call to fetch data to its own function.
 
     return (
         <div className="hostVanDetail--container">

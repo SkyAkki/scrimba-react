@@ -17,6 +17,9 @@
 * {
   box-sizing: border-box;
 }
+h1{
+  color: #161616;
+}
 body, html{
   margin: 0;
   background-color: #FFF7ED;
@@ -144,12 +147,54 @@ header a:hover {
   padding: 12px 22px;
 }
 /* Vans */
+.van-container-parent{
+  padding: 0 25px;
+}
+.van-container-parent h1{
+  color: #161616;
+  font-size: 4rem;
+  font-weight: 700;
+  margin-top: 0;
+}
+.filter-buttons-and-clear{
+  font-size: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+.van-list-filter-buttons{
+  display: flex;
+  margin-bottom: 20px;
+  flex-grow: 1;
+  justify-content: space-between;
+  max-width: 250px;
+}
+.van-type{
+  border-radius: 5px;
+  background: #FFEAD0;
+  height: 37px;
+  padding: 5px;
+}
+.van-type.simple:hover, .van-type.simple.selected {
+  background-color: #E17654;
+  color: #FFEAD0;
+}
+.van-type.rugged:hover, .van-type.rugged.selected {
+  background-color: #115E59;
+  color: #FFEAD0;
+}
+.van-type.luxury:hover, .van-type.luxury.selected {
+  background-color: #161616;
+  color: #FFEAD0;
+}
+.van-type.clear-filters{
+  text-decoration-line: underline;
+  background: none;
+}
 .vans-container{
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
   gap: 20px;
-  padding: 0 25px;
   background: #FFF7ED;
 }
 .vanCard--details{
@@ -538,4 +583,75 @@ header a:hover {
 .host-van-detail-image {
   height: 100px;
   border-radius: 5px;
+}
+/* Not Found Page */
+.not-found-container {
+  padding-inline: 26px;
+}
+.not-found-container h1{
+  color: #161616;
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.not-found-container .link-button {
+  width: 100%;
+  background-color: #161616;
+  color: white;
+  height: 55px;
+  font-size: 2rem;
+  font-weight: 700;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-inline: 27px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;    
+}
+
+.login-form > input {
+  border: 1px solid rgba(209, 213, 219);
+  height: 40px;
+  text-indent: 10px;
+  font-family: "Inter", sans-serif;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  font-weight: 400;
+}
+
+.login-form > input:focus {
+  outline: none;
+}
+
+.login-form > input:first-of-type {
+  border-radius: 6px 6px 0px 0px;
+}
+
+.login-form > input:last-of-type {
+  border-radius: 0px 0px 6px 6px;
+  border-top: none;
+}
+
+.login-form > button {
+  background-color: #FF8C38;
+  border: none;
+  border-radius: 6px;
+  height: 55px;
+  margin-top: 22px;
+  color: white;
+  font-family: "Inter", sans-serif;
+}
+.red {
+  color: #cc0000;
+  margin: 0;
 }

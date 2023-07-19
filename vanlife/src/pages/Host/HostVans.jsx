@@ -1,19 +1,21 @@
-import React from "react"
-import { Link } from "react-router-dom"
-
+import { Link, useLoaderData } from "react-router-dom"
+import { getHostVans } from "../../api"
+import {requireAuth} from "../../utils"
+export async function loader(){
+    await requireAuth
+    return getHostVans()
+} 
 export default function HostVans(){
-    const [vans, setVans] = React.useState([])
+    // const [vans, setVans] = React.useState([])
+    // not using vans variable as a state anymore after using loaders.
+    const vans = useLoaderData()
 
-    React.useEffect(()=>{
-        fetch(`/api/host/vans`)
-        .then(res=>res.json())
-        .then(data=>setVans(data.vans))
-    },[])
+    // Moved the useEffect (which was used for api call) out
   
     const vanElements = vans.map((van)=>{
         return (
             <li key={van.id}>
-                <Link className="hostVanCard" to={`/host/vans/${van.id}`}>
+                <Link className="hostVanCard" to={van.id}>
                     <img src={van.imageUrl} className="hostVanCard--image"></img>
                     <div className="hostVanCard--details">
                         <h3>{van.name}</h3>
